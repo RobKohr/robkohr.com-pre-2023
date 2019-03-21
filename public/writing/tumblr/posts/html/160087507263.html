@@ -1,0 +1,24 @@
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
+            </head>
+            <body>
+                
+                
+                                    <h1>How Vive Lighthouses work</h1>
+                    <figure data-orig-width="800" data-orig-height="350" class="tmblr-full"><img src="https://66.media.tumblr.com/281359cf15eb89374c6493aa28d620b8/tumblr_inline_op4ndxrhm71qzjh7o_540.png" alt="image" data-orig-width="800" data-orig-height="350"/></figure><p><br/></p><p>A great explanation of how the vive lighthouses work:</p><p><br/></p><p><a href="http://hackaday.com/2016/12/21/alan-yates-why-valves-lighthouse-cant-work/">http://hackaday.com/2016/12/21/alan-yates-why-valves-lighthouse-cant-work/</a><br/><br/>My short-short summary:<br/></p><p>There is a rotating vertical beam from the lighthouse that happens at a very regular speed (60 sweeps per second), and a pulse that happens whenever the beam is at a specific point. You measure the difference in time from the pulse and when the beam has swept your point, any you know the angle of the beam at that point, and therefore your own angle. If you have two lighthouses, you can figure out two angles, which gives the position of any sensor on a the horizontal plane. </p><p><br/>Each light house actually has two sweeping beams, and the second one sweeps vertically, so then with the two lighthouses, you can figure out the vertical position for any sensor.<br/><br/></p><p>Then you throw on a bunch of sensors on your devices all doing this together, and each getting their position, and then you can figure out the orientation of any device (and the extra sensors can compensate for any errors or things that might be blocking). <br/><br/></p><p>This makes for a very good positional system (down to the micron level), but the problem is 60 sweeps per second means there is some time in between (1/60th of a second) where the system doesn&rsquo;t have any updates. That seems pretty minor, but we can move fast, especially when battling aliens. So in between sweeps, the devices use an inertial system that uses dead reckoning to figure out your acceleration in different directions and compensate for position changes. This can be pretty precise, and is actually how missiles and ships, and pretty much everything tracked position before gps. It does lead to drift over time, but 1/60th of a second later, it is corrected for, and so it drift doesn&rsquo;t matter.<br/><br/></p><p>All in all, a brilliant piece of technology. <br/><br/></p><p>But, listen to Alan Yates, and hear even more details about different motor types, circuitry issues, lens problems, and all the other minutia that had to be conquered to get this out in the market. <br/></p>
+                
+                
+                
+                
+                
+                
+                                <div id="footer">
+                <span id="timestamp"> April 28th, 2017 12:04pm </span>
+                                </div>
+            </body>
+        </html>
+
+        

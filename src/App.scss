@@ -1,0 +1,164 @@
+$banner-color: #bd7eaf;
+$body-color: #f5efe6;
+$title-color: #152b3e;
+$odd-nav-color: $title-color;
+$even-nav-color: #e0653f;
+$banner-text-color: white;
+$banner-background-color: #bd7eaf;
+$nav-text-color: black;
+$content-background-color: #73c4d7;
+#mc_embed_signup {
+  background: #fff;
+  clear: left;
+  font: 14px Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: "Play", sans-serif;
+  background: $body-color;
+  padding: 0px;
+  margin: 0px;
+
+  top: 0px;
+  #router {
+    @media only (max-width: 600px) {
+      banner {
+        display: none !important;
+      }
+      #nav {
+        & > a {
+          width: 25vw !important;
+          height: 25vw !important;
+          &:first-child {
+            margin-left: 0vw !important;
+          }
+          & > div {
+            border-radius: 20vw;
+            width: 20vw;
+            height: 20vw;
+            &:before {
+              font-size: 12vw;
+              position: absolute;
+              width: 19vw;
+              text-align: center;
+              left: -1.8vw;
+              top: 3vw;
+            }
+          }
+        }
+      }
+    }
+    margin: 0px;
+    padding: 0px;
+
+    banner,
+    #nav {
+      margin: 0px;
+      display: flex;
+
+      & > div,
+      & > a {
+        position: relative;
+        display: block;
+
+        width: 20vw;
+        height: 20vw;
+        padding: 1em;
+        box-sizing: border-box;
+        &:first-child {
+          margin-left: 20vw;
+        }
+      }
+      .spacer {
+        background: green;
+      }
+    }
+
+    banner {
+      background: $banner-background-color;
+      color: $banner-text-color;
+      & > div {
+        overflow: hidden;
+      }
+      #title {
+        display: block;
+        background: $title-color;
+        &.selected {
+          background: $content-background-color;
+        }
+        h1 {
+          margin: 0px;
+          padding: 0px;
+        }
+      }
+      #summary {
+        width: 60vw;
+      }
+    }
+  }
+  #nav {
+    & > a {
+      color: $nav-text-color;
+      text-decoration: none;
+      position: relative;
+      &:nth-child(odd) {
+        background: $odd-nav-color;
+        &.selected {
+          background: $content-background-color;
+        }
+      }
+      &:nth-child(even) {
+        background: $even-nav-color;
+        &.selected {
+          background: $content-background-color;
+        }
+      }
+
+      & > div {
+        position: absolute;
+        top: 0px;
+        left: 2vw;
+        top: 2vw;
+        border-radius: 16vw;
+        background: white;
+        width: 16vw;
+        height: 16vw;
+        &:before {
+          font-size: 10vw;
+          position: absolute;
+          width: 16vw;
+          text-align: center;
+          left: -1.8vw;
+          top: 3vw;
+        }
+        & > span {
+          display: block;
+          text-align: center;
+          position: absolute;
+          width: 100%;
+          left: 0px;
+          bottom: 15px;
+        }
+      }
+    }
+  }
+  #content {
+    background: $content-background-color;
+    padding: 2em;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Lobster", cursive;
+}
+quote {
+  font-family: "Lobster", cursive;
+}
+// Fonts available:
+/*
+font-family: 'Lobster', cursive;
+font-family: 'Play', sans-serif;
+*/

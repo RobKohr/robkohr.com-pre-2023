@@ -1,0 +1,26 @@
+#page-projects {
+  .project {
+    clear: both;
+    img {
+      width: 20vw;
+      height: 15vw;
+
+      border-radius: 5vw;
+      float: left;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 5px dashed gray;
+
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+  .project:nth-child(even) img {
+    float: right;
+  }
+  #projects-end {
+    clear: both;
+  }
+}

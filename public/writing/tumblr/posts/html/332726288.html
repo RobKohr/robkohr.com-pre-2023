@@ -1,0 +1,47 @@
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
+            </head>
+            <body>
+                
+                
+                                    <h1>Thinking about how to do a schema-less mysql document store</h1>
+                    <p>So I was looking at CouchDB as a possible document store, but its main problem seems to be a slow insert rate. Maybe something similar could be done in mysql.</p>
+<p>==Tables==</p>
+<p>The main document storage table:</p>
+<p>document</p>
+<p>key varchar(size depends on hashing)</p>
+<p>document text</p>
+<p>document would be JSON data.</p>
+<p>You may want to index fields in the documents. To do so we could have another table:</p>
+<p>indexed_field_values</p>
+<p>field</p>
+<p>value</p>
+<p>document_key</p>
+<p>==Another way==</p>
+<p>You could just have a documents table with autoincrementing ids:</p>
+<p>document</p>
+<p>id</p>
+<p>document text</p>
+<p>and have a keys table</p>
+<p>keys</p>
+<p>key</p>
+<p>document_id</p>
+<p>Lookups, updates, and inserts would be done through the keys table to individual documents, and a single document could have multiple keys.</p>
+
+<p>What do you think?</p>
+                
+                
+                
+                
+                
+                
+                                <div id="footer">
+                <span id="timestamp"> January 13th, 2010 2:10pm </span>
+                                </div>
+            </body>
+        </html>
+
+        

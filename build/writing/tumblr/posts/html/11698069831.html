@@ -1,0 +1,81 @@
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
+            </head>
+            <body>
+                
+                
+                                    <h1>Avoiding a deep stack of callbacks</h1>
+                    <p>When working with mongodb especially, but also in other cases, you can create a deep stack of calls that can get pretty ugly.</p>
+<p>To avoid this I created a function that will recursively go through an array of things you want to process in a callback stack:</p>
+<pre>utils.callbackStack = function(stack){
+        var params = stack.shift();
+        if(!params)
+            return;
+        if(params.no_params){
+            params.f();
+        }else{
+            params.f(params, function(){utils.callbackStack(stack)});
+        }
+ }
+</pre>
+<p>Now when you want to create a stack to interate through, first create the function. For this example I am using something that adds the vision of a ship in a game to req.data.vision (these details don&rsquo;t matter).</p>
+<pre>       addToVision = function(p, callback){
+            //p is short for params                                                                                                                                       
+            db.
+                c(p.collection).
+                find(p.query).
+                toArray(function(err, objs){
+                    req.data.vision[p.collection] = db.arrayToObject(objs);
+                    callback();
+                });
+
+        }
+</pre>
+<p>Now I can define the stack. The f attribute defines the function to run with a passed in paramaters object.</p>
+<pre>        var add_vision_stack = [
+            {collection:'ship', query:ship_query, f:addToVision},
+            {collection:'port', query:query, f:addToVision},
+            {collection:'cannon_shot', query:query, f:addToVision},
+            {f:next, no_params:true}
+        ];
+</pre>
+<p>Function &ldquo;next&rdquo; is is just some other function I want to execute after the stack is finished. This also illustrates that you can use a variety of functions in the stack.</p>
+<p>Finally we call:</p>
+<pre>utils.callbackStack(add_vision_stack);
+</pre>
+<p>to begin the operation.</p>
+<p>The callbackStack function can be re-used in a variety of situations where you don&rsquo;t want to see something like this:</p>
+<pre>var useFile = function(filename,callback){
+    posix.stat(filename).addCallback(function (stats) {
+        posix.open(filename, process.O_RDONLY, 0666).addCallback(function (fd) {
+            posix.read(fd, stats.size, 0).addCallback(function(contents){
+                callback(contents);
+                sys.debug("useFile callback returned");
+            });
+            sys.debug("read returned");
+        });
+        sys.debug("open returned");
+    });
+    sys.debug("stat returned");
+};
+
+//source: <a href="http://stackoverflow.com/questions/1809619/managing-lots-of-callback-recursion-in-nodejs">http://stackoverflow.com/questions/1809619/managing-lots-of-callback-recursion-in-nodejs</a>
+</pre>
+                
+                
+                
+                
+                
+                
+                                <div id="footer">
+                <span id="timestamp"> October 20th, 2011 1:36pm </span>
+                                                      <span class="tag">javascript</span>
+                                      <span class="tag">node.js</span>
+                                              </div>
+            </body>
+        </html>
+
+        

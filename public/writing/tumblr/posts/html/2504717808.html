@@ -1,0 +1,32 @@
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
+            </head>
+            <body>
+                
+                
+                                    <h1>SEO friendly ajax links</h1>
+                    <p><a href="http://constantsail.com">ConstantSail</a> is going to be available in multiple languages, and I put an image button in the menu which will pop up a list of links to the urls of the translated sites (example: <a href="http://contantsail.com/lang-es/">http://contantsail.com/lang-es/</a> for spanish).</p>
+<p>The popup is a javascript reveal of a div (ok so it isn&rsquo;t really ajax), but I wanted google&rsquo;s crawler to actually go to the page with the list of links to the translations.</p>
+<p>What I did was create a link with the href pointing to the url I wanted google to go, and an onclick event that did the popup and return false (so that it doesn&rsquo;t follow the href).   If this would be pulled from actual ajax, this would be even more helpful since google can index all that fine content that would have been hidden behind the ajax call.</p>
+<p>Code:</p>
+<p>&lt;a href=&ldquo;/languages/&rdquo; onclick=&ldquo;$(&rsquo;#languages&rsquo;).show();return false;&rdquo;&gt;</p>
+<p>You could replace $(&rsquo;#languages&rsquo;).show() with your ajax call.</p>
+                
+                
+                
+                
+                
+                
+                                <div id="footer">
+                <span id="timestamp"> December 28th, 2010 7:46pm </span>
+                                                      <span class="tag">html</span>
+                                      <span class="tag">ajax</span>
+                                      <span class="tag">seo</span>
+                                              </div>
+            </body>
+        </html>
+
+        

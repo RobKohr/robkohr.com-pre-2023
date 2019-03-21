@@ -1,0 +1,35 @@
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="stylesheet" type="text/css" href="../style.css"/>
+            </head>
+            <body>
+                
+                
+                                    <h1>emacs recursive find&grep in project directory</h1>
+                    <p>I do a lot of work in a set of directories in a project in emacs. The project has a huge number of files, and a lot of debugging involves tracking down little snippets of code or finding files.</p>
+<p>To help with this, there are two really useful commands:</p>
+<ul><li>M-x grep-find - this will recursively find text in files in sub directories of the current directory</li>
+<li>M-x find-name-dired - this will find files that contain a string of text in a specified directory (defaults to current).</li>
+</ul><p>grep-find is useful, especially since it provides links to the line numbers in the files that you can quickly jump to with a click or by pressing return on them. The down side, it is stuck to the current directory. If you want it to start at a custom directory, you can do so in your .emacs file.</p>
+<p>(custom-set-variables                                          <br/> &rsquo;(grep-find-command &ldquo;find ~/SOME_DIRECTORY ~/SOME_DIRECTORY_2 ~/SOME_DIRECTORY_N -type f -print0 | xar\gs -0 -e grep -nH -e &rdquo;)<br/>)</p>
+<p>You should only have one reference to custom-set-variables in your .emacs, if you already have one, just add the variable to that.</p>
+<p>You can use as many directories as you like for searching.</p>
+<p>Keyboard shortcuts are also nice, so I added these mappings:</p>
+<p>(global-set-key (kbd &ldquo;C-h&rdquo;) &lsquo;grep-find)<br/>(global-set-key (kbd &ldquo;C-R&rdquo;) 'find-name-dired)</p>
+<p>My only wish is that there was a way to specify the default starting directory for find-name-dired. Does anyone know what variable to set for this?</p>
+                
+                
+                
+                
+                
+                
+                                <div id="footer">
+                <span id="timestamp"> November 13th, 2009 2:35pm </span>
+                                                      <span class="tag">emacs</span>
+                                              </div>
+            </body>
+        </html>
+
+        
